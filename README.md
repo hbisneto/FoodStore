@@ -38,6 +38,17 @@ Após configurar o Visual Studio e instalar os pacotes NuGet, você estará pron
 2. Selecione a configuração de depuração **Debug**.
 3. Pressione **F5** para iniciar a aplicação em modo de depuração.
 
+### Informações de Login
+
+A aplicação possui os seguintes logins padrão:
+
+- Usuário padrão: 
+  - Login: `user`
+  - Senha: `1234`
+- Usuário administrativo:
+  - Login: `root`
+  - Senha: `root`
+
 ## Conclusão
 
 Com esses passos, você deve conseguir rodar a aplicação UWP **FoodStore** em modo de depuração sem problemas. Se encontrar qualquer dificuldade, verifique se todos os componentes e pacotes foram corretamente instalados e configurados.
