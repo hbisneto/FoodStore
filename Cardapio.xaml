@@ -1,0 +1,118 @@
+﻿<Page
+    x:Class="FoodStore.Cardapio"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:FoodStore"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d"
+    Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+
+    <Grid>
+        <NavigationView x:Name="navView"
+            IsPaneOpen="False"
+            IsSettingsVisible="True"
+            IsBackButtonVisible="Collapsed"
+            IsBackEnabled="False"
+            Header="Sample Page 2"
+            AlwaysShowHeader="False"
+            PaneTitle="Food Store"
+            PaneDisplayMode="Left"
+            ExpandedModeThresholdWidth="200"
+            SelectionFollowsFocus="Disabled"
+            IsTabStop="False"
+            ItemInvoked="NavView_ItemInvoked" Tapped="navView_Tapped">
+            <NavigationView.MenuItems>
+                <NavigationViewItemHeader Content="Navegação"/>
+                <NavigationViewItem Content="Menu Principal" Tag="SamplePage1" x:Name="SamplePage1Item">
+                    <NavigationViewItem.Icon>
+                        <SymbolIcon Symbol="Home"/>
+                    </NavigationViewItem.Icon>
+                </NavigationViewItem>
+                <NavigationViewItemHeader Content="Cardápio"/>
+            </NavigationView.MenuItems>
+
+            <!--INSERT SETTINGS ITEM-->
+
+            <Frame x:Name="contentFrame" />
+        </NavigationView>
+
+        <SplitView x:Name="splitView" PaneBackground="{ThemeResource SystemControlBackgroundChromeMediumLowBrush}"
+IsPaneOpen="False" OpenPaneLength="700" CompactPaneLength="0" DisplayMode="Inline" PanePlacement="Right">
+            <SplitView.Pane>
+                <ScrollViewer>
+                    <Grid>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="25*"/>
+                            <RowDefinition Height="10*"/>
+                            <RowDefinition Height="25*"/>
+                            <RowDefinition Height="25*"/>
+                            <RowDefinition Height="25*"/>
+                        </Grid.RowDefinitions>
+
+                        <StackPanel Grid.Row="0">
+                            <TextBlock Text="CATEGORIA" x:Name="CategoriaNome_txtBlock" HorizontalAlignment="Center" Style="{StaticResource BaseTextBlockStyle}" Margin="0,12,0,0"/>
+
+                            <FlipView x:Name="flipViewImageGallery" Height="360" Width="640" Margin="0,15,0,15">
+                                <Image x:Name="SplitviewImage" Source="/Assets/SplashScreen.scale-200.png" Height="360" Width="640"/>
+                                <Image Source="/Assets/SplashScreen.scale-200.png" Height="360" Width="640"/>
+                            </FlipView>
+                        </StackPanel>
+
+
+                        <StackPanel Grid.Row="1" Width="640" Margin="0,0,0,30">
+                            <Grid Background="#1D1D1D">
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="50*"/>
+                                    <RowDefinition Height="50*"/>
+                                </Grid.RowDefinitions>
+
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="50*"/>
+                                    <ColumnDefinition Width="50*"/>
+                                </Grid.ColumnDefinitions>
+
+                                <Grid Grid.Column="0" Grid.Row="0">
+                                    <TextBlock x:Name="NomeLanche_txtBlock" Text="NOME DO LANCHE" Style="{StaticResource TitleTextBlockStyle}" TextWrapping="Wrap" HorizontalAlignment="Center" Margin="5,0,5,10"/>
+                                </Grid>
+
+                                <Grid Grid.Column="2" Grid.Row="0">
+                                    <TextBlock x:Name="Valor_txtBlock" Text="0.00" Style="{StaticResource TitleTextBlockStyle}" TextWrapping="Wrap" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="5,0,5,10"/>
+                                </Grid>
+                            </Grid>
+                        </StackPanel>
+
+                        <StackPanel Grid.Row="2" Margin="0,0,0,30">
+                            <TextBlock x:Name="splitViewTitle" Text="Detalhes" Style="{StaticResource TitleTextBlockStyle}" Width="640" Margin="10,0,10,15"/>
+                            <Grid>
+                                <TextBlock x:Name="Detalhes_txtBlock" TextWrapping="Wrap" Width="640" Margin="0,0,0,15">
+                                Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.
+                               <LineBreak></LineBreak>
+                                <LineBreak></LineBreak>
+                                </TextBlock>
+                            </Grid>
+                        </StackPanel>
+
+                        <StackPanel Grid.Row="3" Grid.Column="0" Width="640" VerticalAlignment="Center" Margin="0,0,0,30">
+                            <TextBlock Text="INGREDIENTES" Style="{StaticResource TitleTextBlockStyle}" Width="640" Margin="10,0,10,15"/>
+                            <Grid Margin="10,0,10,15">
+                                <TextBlock x:Name="Ingredients_txtBlock" Text="INGREDIENTES AQUI..." Margin="0,0,10,10"/>
+                            </Grid>
+
+                            <TextBlock Text="Escolha ingredientes para adicionar ao seu item" Margin="10,20,0,0"/>
+                            <ListView x:Name="itemIngredients_checkBoxList" Margin="10,10,0,10" Height="200">
+                                <ListView.ItemTemplate>
+                                    <DataTemplate>
+                                        <CheckBox Content="{Binding Nome}" IsChecked="{Binding IsSelected, Mode=TwoWay}" />
+                                    </DataTemplate>
+                                </ListView.ItemTemplate>
+                            </ListView>
+
+                            <Button x:Name="AddToCart_btn" Content="Adicionar ao pedido..." HorizontalAlignment="Right" VerticalAlignment="Bottom" Margin="20" Click="AddToCart_btn_Click"/>
+                        </StackPanel>
+                    </Grid>
+                </ScrollViewer>
+            </SplitView.Pane>
+        </SplitView>
+    </Grid>
+</Page>
